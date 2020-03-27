@@ -1,0 +1,11 @@
+1. In 1-2 sentences, explain what React's useRouteMatch hook is used for.
+
+usedRouteMatch lets you add nested routes to your application so that you can change a single parameter in the URL without having to change the whole thing. 
+
+2. How would you explain form validation to someone who has never programmed before? 
+
+Restriction given to fields in a form such as message telling you need a stronger password or correct email address. 
+
+3. In 1-2 sentences, define end to end testing.
+
+ End to end tests focus on UI and mimic how a user might interact with an app, simulating real events like button clicks, scrolls, form submits, and the like. 
