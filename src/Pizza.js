@@ -5,7 +5,10 @@ import axios from "axios";
 const formSchema = yup.object().shape({
     name: yup.string().required("Name is a required field").min(2, "Name must be at least 2 characters long"),
     size: yup.string().oneOf(['Small', 'Medium', 'Large', 'Extra Large']),
-    toppings: yup.string().required(),
+    peperoni: yup.boolean(),
+    cheese: yup.boolean(),
+    bacon: yup.boolean(),
+    pineapple: yup.boolean(),
     instructions: yup.string()
 })
 
@@ -18,7 +21,10 @@ export default function Pizza() {
     const [formValues, setFormValues] = useState({
         name: '',
         size:'',
-        toppings:'',
+        peperoni:'',
+        cheese:'',
+        bacon:'',
+        pineapple:'',  
         instructions:'',
         
       
@@ -27,9 +33,7 @@ export default function Pizza() {
 
       const [errors, setErrors] = useState({
         name: '',
-        size:'',
-        toppings:'',
-        instructions:'',
+       
         
         
       
@@ -50,7 +54,7 @@ export default function Pizza() {
         // Reach will allow us to "reach" into the schema and test only one part.
         yup
           .reach(formSchema, e.target.name)
-          .validate( e.target.value)
+          .validate(e.target.value)
           .then(valid => {
             setErrors({
               ...errors,
@@ -81,7 +85,10 @@ const onFormSubmit = event => {
       setFormValues({
         name: '',
         size:'',
-        toppings:'',
+        peperoni:'',
+        cheese:'',
+        bacon:'',
+        pineapple:'',
         instructions:'',
         
       });
@@ -99,7 +106,7 @@ const onInputChange = event => {
     const newFormData = {
       ...formValues,
       [event.target.name]:
-      event.target.value
+      event.target.type === "checkbox" ? event.target.checked : event.target.value
     };
     validateChange(event);
     setFormValues(newFormData);
@@ -127,15 +134,15 @@ const onInputChange = event => {
             <option>Extra Large</option>
           </select>
         </label><br />
-        <p>Toppings : </p><br />
-        <label htmlFor="toppings" id="toppings" className="toppings" checked={formValues.toppings}> 
-            <input type="checkbox" name="toppings" value="Peperoni" onChange={onInputChange}/>Peperoni  
-            <input type="checkbox" name="toppings" value="Cheese"onChange={onInputChange}/>Cheese 
-            <input type="checkbox" name="toppings" value="Canadian Bacon"  onChange={onInputChange}/>Canadian Bacon
-            <input type="checkbox" name="toppings" value="Pineapple" onChange={onInputChange}/>Pineapple
-            {errors.toppings.length > 0  ? (
-          <p className="error">{errors.toppings}</p>
-        ) : null}
+        <p></p>
+        <label htmlFor="peperoni"> 
+            <input type="checkbox" name="peperoni" checked={formValues.peperoni} onChange={onInputChange}/>Peperoni  </label>
+            <label htmlFor="cheese"> 
+            <input type="checkbox" name="cheese" checked={formValues.cheese} onChange={onInputChange}/>Cheese </label>
+            <label htmlFor="bacon"> 
+            <input type="checkbox" name="bacon"checked={formValues.bacon} onChange={onInputChange}/>Canadian Bacon </label>
+            <label htmlFor="pinapple"> 
+            <input type="checkbox" name="pineapple" checked={formValues.pineapple} onChange={onInputChange}/>Pineapple
         </label><br />
         
         <label htmlFor="instruction">  Special Instructions(optional)
