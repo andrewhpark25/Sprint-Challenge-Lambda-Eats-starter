@@ -140,9 +140,9 @@ const onInputChange = event => {
             <label htmlFor="cheese"> 
             <input type="checkbox" name="cheese" checked={formValues.cheese} onChange={onInputChange}/>Cheese </label>
             <label htmlFor="bacon"> 
-            <input type="checkbox" name="bacon"checked={formValues.bacon} onChange={onInputChange}/>Canadian Bacon </label>
+            <input type="checkbox" name="bacon"  checked={formValues.bacon} onChange={onInputChange}/>Canadian Bacon </label>
             <label htmlFor="pinapple"> 
-            <input type="checkbox" name="pineapple" checked={formValues.pineapple} onChange={onInputChange}/>Pineapple
+            <input type="checkbox" name="pineapple"  checked={formValues.pineapple} onChange={onInputChange}/>Pineapple
         </label><br />
         
         <label htmlFor="instruction">  Special Instructions(optional)

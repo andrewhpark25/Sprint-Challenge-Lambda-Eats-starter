@@ -6,7 +6,7 @@ describe("Testing pizza form", function() {
    
       cy.get('input[name="name"]').type("Andrew").should("have.value", "Andrew");
       cy.get("#size").select("Small").should("have.value", "Small");
-      cy.get('[type="checkbox"]').check(['Cheese'])
+     cy.get('[type="checkbox"]').check().should('be.checked');
       cy.get("button").click();
     });
     
